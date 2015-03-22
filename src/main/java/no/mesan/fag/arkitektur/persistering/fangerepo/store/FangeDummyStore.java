@@ -8,11 +8,21 @@ public class FangeDummyStore implements FangeStore {
 
 	@Override
 	public Fange getByName(String navn) {
-		return new Fange("" + Math.abs(new Random().nextInt()), navn);
+		return new Fange(navn).cloneWithId("" + Math.abs(new Random().nextInt()));
 	}
 
 	@Override
 	public Fange getById(String id) {
-		return new Fange(id, "Dummy");
+		return new Fange("Dummy").cloneWithId(id);
+	}
+
+	@Override
+	public Fange create(Fange fange) {
+		return fange.cloneWithId("" + Math.abs(new Random().nextInt()));
+	}
+
+	@Override
+	public Fange update(Fange fange) {
+		return fange;
 	}
 }

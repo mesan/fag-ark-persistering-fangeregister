@@ -1,30 +1,50 @@
 package no.mesan.fag.arkitektur.persistering.fangerepo.core;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.Optional;
 
 public class Fange {
-    private String id;
+	public static final String PROPERTY_ID = "id";
+	public static final String PROPERTY_NAVN = "navn";
 
-    private String navn;
+	@NotEmpty
+	private final String id;
 
-    private Fange() {
-        // Jackson deserialization
-    }
+	@NotNull
+	private final String navn;
 
-    public Fange(String id, String navn) {
-        this.id = id;
-        this.navn = navn;
-    }
+	public Fange(String navn) {
+		this(null, navn);
+	}
 
-    @JsonProperty
-    public String getId() {
-        return id;
-    }
+	@JsonCreator
+	private Fange(@JsonProperty(PROPERTY_ID) String id, @JsonProperty(PROPERTY_NAVN) String navn) {
+		this.id = id;
+		this.navn = optional(navn, "");
+	}
 
-    @JsonProperty
-    public String getNavn() {
-        return navn;
-    }
+	private <T> T optional(T string, T defaultValue) {
+		return Optional.of(string).or(defaultValue);
+	}
+
+	@JsonProperty(PROPERTY_ID)
+	public String getId() {
+		return id;
+	}
+
+	@JsonProperty(PROPERTY_NAVN)
+	public String getNavn() {
+		return navn;
+	}
+
+	public Fange cloneWithId(String id) {
+		return new Fange(id, navn);
+	}
 
 	@Override
 	public int hashCode() {
