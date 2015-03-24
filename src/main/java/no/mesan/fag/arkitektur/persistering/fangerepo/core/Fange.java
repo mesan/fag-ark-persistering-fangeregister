@@ -2,6 +2,8 @@ package no.mesan.fag.arkitektur.persistering.fangerepo.core;
 
 import javax.validation.constraints.NotNull;
 
+import no.mesan.fag.arkitektur.persistering.fangerepo.store.FangeMongo;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -26,6 +28,10 @@ public class Fange {
 	private Fange(@JsonProperty(PROPERTY_ID) String id, @JsonProperty(PROPERTY_NAVN) String navn) {
 		this.id = id;
 		this.navn = optional(navn, "");
+	}
+
+	public Fange(FangeMongo fangeMongo) {
+		this(fangeMongo.getId().toHexString(), fangeMongo.getNavn());
 	}
 
 	private <T> T optional(T string, T defaultValue) {

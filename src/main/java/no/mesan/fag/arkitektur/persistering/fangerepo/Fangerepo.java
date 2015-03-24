@@ -4,7 +4,7 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 import no.mesan.fag.arkitektur.persistering.fangerepo.health.ConfigurationHealthCheck;
 import no.mesan.fag.arkitektur.persistering.fangerepo.resources.FangeResource;
-import no.mesan.fag.arkitektur.persistering.fangerepo.store.FangeDummyStore;
+import no.mesan.fag.arkitektur.persistering.fangerepo.store.FangeMongoDBMorphiaStore;
 
 public class Fangerepo extends Application<FangerepoConfiguration> {
 	public static void main(String[] args) throws Exception {
@@ -19,7 +19,7 @@ public class Fangerepo extends Application<FangerepoConfiguration> {
 	@Override
 	public void run(FangerepoConfiguration configuration, Environment environment) {
 		registerHealthChecks(configuration, environment);
-		registerResources(environment);
+		registerResources(configuration, environment);
 	}
 
 	private void registerHealthChecks(FangerepoConfiguration configuration, Environment environment) {
@@ -27,8 +27,8 @@ public class Fangerepo extends Application<FangerepoConfiguration> {
 		environment.healthChecks().register("configuration", healthCheck);
 	}
 
-	private void registerResources(Environment environment) {
-		environment.jersey().register(new FangeResource(new FangeDummyStore()));
+	private void registerResources(FangerepoConfiguration configuration, Environment environment) {
+		environment.jersey().register(new FangeResource(new FangeMongoDBMorphiaStore(configuration)));
 	}
 
 }
