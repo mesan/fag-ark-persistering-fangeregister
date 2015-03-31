@@ -1,5 +1,7 @@
 package no.mesan.fag.arkitektur.persistering.fangerepo.resources;
 
+import java.util.List;
+
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -37,6 +39,13 @@ public class FangeResource {
 		} else {
 			return store.getByName(navn.or("").trim());
 		}
+	}
+	
+	@GET
+	@Path("/alle")
+	@Timed
+	public List<Fange> getAll() {
+		return store.getAll();
 	}
 	
 	@POST

@@ -1,6 +1,9 @@
 package no.mesan.fag.arkitektur.persistering.fangerepo.store;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import no.mesan.fag.arkitektur.persistering.fangerepo.core.Fange;
 
@@ -24,5 +27,10 @@ public class FangeDummyStore implements FangeStore {
 	@Override
 	public Fange update(Fange fange) {
 		return fange;
+	}
+
+	@Override
+	public List<Fange> getAll() {
+		return Arrays.asList(getByName("Dummy"));
 	}
 }

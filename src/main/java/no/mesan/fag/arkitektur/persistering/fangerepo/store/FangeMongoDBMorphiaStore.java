@@ -1,6 +1,8 @@
 package no.mesan.fag.arkitektur.persistering.fangerepo.store;
 
 import java.net.UnknownHostException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ws.rs.NotFoundException;
 
@@ -10,6 +12,7 @@ import no.mesan.fag.arkitektur.persistering.fangerepo.core.Fange;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
+import org.mongodb.morphia.query.Query;
 
 import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
@@ -76,6 +79,12 @@ public class FangeMongoDBMorphiaStore implements FangeStore {
 		}
 		ds.save(fangeMongo);
 		return fangeMongo.toFange();
+	}
+
+	@Override
+	public List<Fange> getAll() {
+		Query<FangeMongo> query = ds.find(FangeMongo.class);
+		return query.asList().stream().map(FangeMongo::toFange).collect(Collectors.toList());
 	}
 
 }
