@@ -1,0 +1,3 @@
+mongohost: ${MONGO_PORT_27017_TCP_ADDR}
+mongoport: ${MONGO_PORT_27017_TCP_PORT}
+mongodb: fangerepo

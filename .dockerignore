@@ -1,4 +1,7 @@
-# REMEMBER TO UPDATE .dockerignore #
+.git
+.gitignore
+
+# Copy of .gitignore #
 target/
 pom.xml.tag
 pom.xml.releaseBackup
