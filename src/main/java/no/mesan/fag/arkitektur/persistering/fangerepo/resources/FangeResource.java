@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -33,21 +34,22 @@ public class FangeResource {
 
 	@GET
 	@Timed
-	public Fange get(@QueryParam(Fange.PROPERTY_ID) Optional<String> id, @QueryParam(Fange.PROPERTY_NAVN) Optional<String> navn) {
+	public Fange get(@QueryParam(Fange.PROPERTY_ID) Optional<String> id,
+			@QueryParam(Fange.PROPERTY_NAVN) Optional<String> navn) {
 		if (id.isPresent()) {
 			return store.getById(id.get().trim());
 		} else {
 			return store.getByName(navn.or("").trim());
 		}
 	}
-	
+
 	@GET
 	@Path("/alle")
 	@Timed
 	public List<Fange> getAll() {
 		return store.getAll();
 	}
-	
+
 	@POST
 	@Timed
 	public Response create(Fange fange) {
@@ -58,7 +60,7 @@ public class FangeResource {
 	static Response createCreatedResponse(Fange fange) {
 		return Response.status(Response.Status.CREATED).entity(fange).build();
 	}
-	
+
 	@PUT
 	@Timed
 	public Response update(@Valid Fange fange) {
@@ -67,6 +69,16 @@ public class FangeResource {
 	}
 
 	static Response createUpdatedResponse(Fange fange) {
-		return Response.accepted(fange).build();
+		return Response.ok(fange).build();
+	}
+
+	@DELETE
+	@Timed
+	public Response delete(@Valid Fange fange) {
+		if (store.delete(fange)) {
+			return Response.ok().build();
+		} else {
+			return Response.notModified().build();
+		}
 	}
 }

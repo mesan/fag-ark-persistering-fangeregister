@@ -87,4 +87,10 @@ public class FangeMongoDBMorphiaStore implements FangeStore {
 		return query.asList().stream().map(FangeMongo::toFange).collect(Collectors.toList());
 	}
 
+	@Override
+	public boolean delete(Fange fange) {
+		ds.delete(new FangeMongo(fange));
+		return true;
+	}
+
 }

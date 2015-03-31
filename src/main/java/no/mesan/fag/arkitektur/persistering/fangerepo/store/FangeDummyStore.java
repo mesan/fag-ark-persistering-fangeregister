@@ -33,4 +33,9 @@ public class FangeDummyStore implements FangeStore {
 	public List<Fange> getAll() {
 		return Arrays.asList(getByName("Dummy"));
 	}
+
+	@Override
+	public boolean delete(Fange fange) {
+		return true;
+	}
 }

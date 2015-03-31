@@ -16,4 +16,6 @@ public interface FangeStore {
 
 	public List<Fange> getAll();
 
+	public boolean delete(Fange fange);
+
 }
