@@ -8,8 +8,9 @@ COPY . /opt/fangerepo
 
 WORKDIR /opt/fangerepo
 
-RUN mvn dependency:resolve
+RUN mvn dependency:go-offline
 
+# Would like to "go offline", but it simply doesn't work
 RUN mvn package
 
 CMD ["/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java", "-jar", "target/persistering.fangerepo-0.0.1-SNAPSHOT.jar", "server", "fangerepo_docker.yml"]
