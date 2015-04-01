@@ -2,7 +2,7 @@ FROM maven:3-jdk-8
 
 MAINTAINER Erlend Kristiansen, erlendk@mesan.no, Mesan AS
 
-COPY ./pom.xml /tmp/pom.xml
+COPY pom.xml /tmp/pom.xml
 
 WORKDIR /tmp
 
@@ -12,7 +12,7 @@ COPY . /opt/fangerepo
 
 WORKDIR /opt/fangerepo
 
-# Would like to "go offline", but it simply doesn't work
+# Would like to truly "go offline", but it simply doesn't work
 RUN mvn package
 
 EXPOSE 8080
