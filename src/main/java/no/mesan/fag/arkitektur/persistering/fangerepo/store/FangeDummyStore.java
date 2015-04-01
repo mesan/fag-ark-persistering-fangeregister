@@ -3,7 +3,6 @@ package no.mesan.fag.arkitektur.persistering.fangerepo.store;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 import no.mesan.fag.arkitektur.persistering.fangerepo.core.Fange;
 
@@ -35,7 +34,6 @@ public class FangeDummyStore implements FangeStore {
 	}
 
 	@Override
-	public boolean delete(Fange fange) {
-		return true;
+	public void delete(String id) {
 	}
 }

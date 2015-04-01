@@ -39,24 +39,28 @@ public class FangeMongoDBMorphiaStore implements FangeStore {
 
 	@Override
 	public Fange getById(String id) {
+		return getDBFangeById(id).toFange();
+	}
+
+	private FangeMongo getDBFangeById(String id) {
 		FangeMongo fangeMongo;
 		try {
 			fangeMongo = ds.get(FangeMongo.class, new ObjectId(id));
 		} catch (IllegalArgumentException e) {
 			throw new NotFoundException(e);
 		}
-		checkForFoundEntity(fangeMongo);
-		return fangeMongo.toFange();
+		assertEntityFound(fangeMongo);
+		return fangeMongo;
 	}
 
 	@Override
 	public Fange getByName(String navn) {
 		FangeMongo fangeMongo = ds.find(FangeMongo.class).field("navn").contains(navn).get();
-		checkForFoundEntity(fangeMongo);
+		assertEntityFound(fangeMongo);
 		return fangeMongo.toFange();
 	}
 
-	private void checkForFoundEntity(Object entity) {
+	private void assertEntityFound(Object entity) {
 		if (entity == null) {
 			throw new NotFoundException();
 		}
@@ -88,9 +92,9 @@ public class FangeMongoDBMorphiaStore implements FangeStore {
 	}
 
 	@Override
-	public boolean delete(Fange fange) {
-		ds.delete(new FangeMongo(fange));
-		return true;
+	public void delete(String id) {
+		FangeMongo fangeMongo = getDBFangeById(id);
+		ds.delete(fangeMongo);
 	}
 
 }
