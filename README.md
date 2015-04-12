@@ -2,6 +2,8 @@
 
 Dette er en REST-tjeneste for lagring av fanger.
 
+Denne dokumentasjonen vises best på https://github.com/erlendk/fag-ark-persistering-fangeregister
+
 ## Hvordan sette opp tjenesten med Docker
 
 Start en MongoDB databasecontainer:
