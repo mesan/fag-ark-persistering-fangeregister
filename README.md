@@ -2,9 +2,11 @@
 
 Dette er en REST-tjeneste for lagring av fanger.
 
-Denne dokumentasjonen vises best på https://github.com/erlendk/fag-ark-persistering-fangeregister
+Denne dokumentasjonen vises best på [GitHub](https://github.com/erlendk/fag-ark-persistering-fangeregister).
 
 ## Hvordan sette opp tjenesten med Docker
+
+Et ferdigbygget image finnes på [DockerHub](https://hub.docker.com) med navnet [mesanfagark/fag-ark-persistering-fangereg](https://registry.hub.docker.com/u/mesanfagark/fag-ark-persistering-fangereg/).
 
 Start en MongoDB databasecontainer:
 
