@@ -64,6 +64,7 @@ Mens en **liste med fanger** (json-array) kan se slik ut:
 ```
 
 ### Hente alle fanger
+
 URL | Metode | Status | Returverdi
 --- | --- | --- | ---
 /fanger | GET | 200 (OK) | Array med fanger.
@@ -71,6 +72,7 @@ URL | Metode | Status | Returverdi
 Eksempel-URL: http://localhost:49000/fanger 
 
 ### Hente én fange
+
 URL | Metode | Status | Returverdi
 --- | --- | --- | ---
 /fanger/{id} | GET | 200 (OK) / 404 (Not Found) | Fange.
@@ -78,16 +80,19 @@ URL | Metode | Status | Returverdi
 Eksempel-URL: http://localhost:49000/fanger/552a30cfe4b0c8d8b3a82f1a
 
 ### Lagre en fange
+
 URL | Metode | Headers | Status | Input | Returverdi
 --- | --- | --- | --- | --- | ---
 /fanger | POST | Content-Type: application/json | 201 (Created) | Fange (uten id/id blir ignorert) | Fange med oppdatert id.
 
 ### Oppdatere en fange
+
 URL | Metode | Headers | Status | Input | Returverdi
 --- | --- | --- | --- | --- | ---
 /fanger | PUT | Content-Type: application/json | 200 (OK) / 404 (Not Found) | Fange. | Oppdatert fange.
 
 ### Slette en fange
+
 URL | Metode | Status
 --- | --- | ---
 /fanger/{id} | DELETE  | 200 (OK) / 404 (Not Found) 
