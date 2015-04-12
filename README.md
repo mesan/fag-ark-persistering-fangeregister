@@ -2,7 +2,7 @@
 
 Dette er en REST-tjeneste for lagring av fanger.
 
-Denne dokumentasjonen vises best på [GitHub](https://github.com/erlendk/fag-ark-persistering-fangeregister).
+__OBS:__ Denne dokumentasjonen vises best på [GitHub](https://github.com/erlendk/fag-ark-persistering-fangeregister).
 
 ## Hvordan sette opp tjenesten med Docker
 
@@ -26,7 +26,7 @@ Navnet *mongo-fangereg* er tilfeldig valgt, og kan byttes ut med et hvilket som 
 
 må hete akkurat dette. 
 
-Tjenesten kan nå aksesseres via **http://\<din-IP\>:49000**.
+Tjenesten kan nå aksesseres via __http://\<din-IP\>:49000__.
 
 Dersom du føler for å inspisere databasen kan dette for eksempel gjøres slik:
 
@@ -36,9 +36,9 @@ docker run --rm -it --link mongo-fangereg:mongo mongo bash -c 'mongo --host=$MON
 
 ## API
 
-Alle verdier er på **JSON-format** og all kommunikasjon foregår over **HTTP**.
+Alle verdier er på __JSON-format__ og all kommunikasjon foregår over __HTTP__.
 
-En **fange** kan for for øyeblikket se slik ut:
+En __fange__ kan for for øyeblikket se slik ut:
 
 ```json
 {
@@ -47,7 +47,7 @@ En **fange** kan for for øyeblikket se slik ut:
 }
 ```
 
-Mens en **liste med fanger** (json-array) kan se slik ut:
+Mens en __liste med fanger__ (json-array) kan se slik ut:
 
 ```json
 [
