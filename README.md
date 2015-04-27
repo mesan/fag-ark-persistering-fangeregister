@@ -2,7 +2,7 @@
 
 Dette er en REST-tjeneste for lagring av fanger.
 
-__OBS:__ Denne dokumentasjonen vises best på [GitHub](https://github.com/erlendk/fag-ark-persistering-fangeregister).
+__OBS:__ Denne dokumentasjonen vises best på [GitHub](https://github.com/mesan/fag-ark-persistering-fangeregister).
 
 ## Hvordan sette opp tjenesten med Docker
 
