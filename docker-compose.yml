@@ -1,0 +1,9 @@
+fangeregister:
+  image: mesanfagark/fag-ark-persistering-fangereg
+  ports: 
+    - "49000:8080"
+  links: 
+    - mongo
+mongo:
+  image: mongo:3.0.1
+
