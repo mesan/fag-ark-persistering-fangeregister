@@ -18,14 +18,11 @@ public class Fangerepo extends Application<FangerepoConfiguration> {
 	public String getName() {
 		return "Mesan fangerepo";
 	}
-	
+
 	@Override
 	public void initialize(Bootstrap<FangerepoConfiguration> bootstrap) {
-		bootstrap.setConfigurationSourceProvider(
-                new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(),
-                                                   new EnvironmentVariableSubstitutor()
-                )
-        );
+		bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(
+				bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor()));
 	}
 
 	@Override
