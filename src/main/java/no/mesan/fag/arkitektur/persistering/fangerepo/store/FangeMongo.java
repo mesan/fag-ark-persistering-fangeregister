@@ -14,6 +14,7 @@ public class FangeMongo {
 
 	private String navn;
 	
+	@SuppressWarnings("unused")
 	private FangeMongo() {
 		// used by Morphia
 	}
